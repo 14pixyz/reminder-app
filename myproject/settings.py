@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'cloudinary',
 
     # 追加app
-    'ticket',
+    'jusbe',
 
     # allauth
     'allauth',
@@ -183,9 +183,9 @@ ACCOUNT_USERNAME_REQUIRED = False  # サインナップ、ログイン時のユ�
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # サインアップにメールアドレス確認を使用
 ACCOUNT_EMAIL_REQUIRED = True
 
-# LOGIN_REDIRECT_URL = 'ticket:supporter-home'  # ログイン成功後の遷移先の指定
+# LOGIN_REDIRECT_URL = 'jusbe:supporter-home'  # ログイン成功後の遷移先の指定
 
-LOGOUT_REDIRECT_URL = 'ticket:supporter-login'  # ログアウト成功後の遷移先の指定
+LOGOUT_REDIRECT_URL = 'jusbe:supporter-login'  # ログアウト成功後の遷移先の指定
 
 
 # メール送信設定
