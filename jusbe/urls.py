@@ -1,14 +1,15 @@
-# from django.urls import path
-# from .views import supporter_customuser, supporter_event, supporter_function, supporter_ticket, customer_event, customer_reservation, customer_function
+from django.urls import path
+from .views import remind
 
 # 画像用
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 app_name = 'jusbe'
 
-urlpatterns = []
+urlpatterns = [
+    path('', remind.IndexView.as_view(), name="index"),
+]
 
 # 画像用
 if settings.DEBUG:
