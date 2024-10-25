@@ -43,11 +43,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     create_datetime = models.DateTimeField(default=timezone.now)
     update_datetime = models.DateTimeField(auto_now=True)
+    # Stripe
+    stripe_customer_id = models.CharField(max_length=255, blank=True, null=True)
+    stripe_card_id = models.CharField(max_length=255, blank=True, null=True)
+    stripe_subscription_id = models.CharField(max_length=255, blank=True, null=True)
 
     objects = CustomUserManager()
 
-    EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
+    EMAIL_FIELD = 'email'
 
     @property
     def is_free(self):
@@ -63,9 +67,10 @@ class Category(models.Model):
     title = models.CharField(max_length=150)
     create_datetime = models.DateTimeField(default=timezone.now)
     update_datetime = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Remind(models.Model):
@@ -76,7 +81,8 @@ class Remind(models.Model):
     is_checked = models.BooleanField(default=False)
     create_datetime = models.DateTimeField(auto_now_add=True)
     update_datetime = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
     category = models.ManyToManyField(Category, related_name='tags', blank=True)
 
     def __str__(self):
-        return self.name
+        return self.title
