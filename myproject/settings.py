@@ -183,9 +183,9 @@ ACCOUNT_USERNAME_REQUIRED = False  # サインナップ、ログイン時のユ�
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # サインアップにメールアドレス確認を使用
 ACCOUNT_EMAIL_REQUIRED = True
 
-# LOGIN_REDIRECT_URL = 'jusbe:supporter-home'  # ログイン成功後の遷移先の指定
+LOGIN_REDIRECT_URL = ''  # ログイン成功後の遷移先の指定
 
-LOGOUT_REDIRECT_URL = 'jusbe:supporter-login'  # ログアウト成功後の遷移先の指定
+LOGOUT_REDIRECT_URL = ''  # ログアウト成功後の遷移先の指定
 
 
 # メール送信設定
@@ -198,3 +198,11 @@ else:
     EMAIL_USE_TLS = True
     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+
+# stripe
+STRIPE_BASE_URL = 'https://api.stripe.com'
+STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+STRIPE_PRICE_ID = env('STRIPE_PRICE_ID')
+STRIPE_ACCOUNT_ID = env('STRIPE_ACCOUNT_ID')
